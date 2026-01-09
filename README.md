@@ -81,9 +81,14 @@ Step 2: Read Alignment (Bowtie2)
 
 Input:
 - Paired-end FASTQ files
+- Bowtie2 index (built from reference genome)
 
-Command example:
-bowtie2 -x hg38 \
+Build index (one-time):
+bowtie2-build genome.fa hg38
+# Output: hg38.*.bt2
+
+Command example (alignment):
+bowtie2 -x $BW2_INDEX \
   -1 sample_1.fq.gz \
   -2 sample_2.fq.gz \
   --very-sensitive \
